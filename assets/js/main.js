@@ -243,6 +243,7 @@
     }
   });
 
+
   /**
    * Animation on scroll
    */
@@ -254,5 +255,7 @@
       mirror: false
     });
   });
+
+ 
 
 })()
