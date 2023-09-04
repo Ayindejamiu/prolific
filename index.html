@@ -676,7 +676,8 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="https://qcjact46pam6lsikbmaxnry3pm0wkvcl.lambda-url.us-east-1.on.aws/" method="post" role="form" class="">
+            <div id="root"></div>
+            <form action="https://qcjact46pam6lsikbmaxnry3pm0wkvcl.lambda-url.us-east-1.on.aws/" method="post" role="form" class="php-email-form/">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -702,6 +703,7 @@
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
+               
      
           </div>
 
@@ -823,12 +825,11 @@
 
 
   <!-- Template Main JS File -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    (function () {
-      emailjs.init("1-AO8OyMPjjMVZ7RH");
-    })();
-  </script>
+  <script src="app.js"></script>
+
   
 </body>
 
