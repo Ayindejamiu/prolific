@@ -676,7 +676,7 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="https://tl3ivle73v3ljzwarqhulttyqu0tfdmu.lambda-url.us-east-1.on.aws/function" method="post" role="form" class="">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -704,18 +704,7 @@
               <div class="text-center">
                <input type="submit" value"send"> <button type="submit">Send Message</button></div>
             </form>
-            <form action="https://tl3ivle73v3ljzwarqhulttyqu0tfdmu.lambda-url.us-east-1.on.aws" method="POST">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" required><br><br>
-      
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required><br><br>
-      
-              <label for="message">Message:</label>
-              <textarea id="message" name="message" rows="4" required></textarea><br><br>
-      
-              <input type="submit" value="Submit">
-          </form>
+            
       
          
      
@@ -851,54 +840,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script>
-    function submitForm() {
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-
-        const formData = {
-            "name": name,
-            "email": email,
-            "message": message,
-            "headers": {
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                "Accept-Encoding": "gzip, deflate, br",
-                "Host": "xyz12345.execute-api.us-east-1.amazonaws.com",
-                "Postman-Token": "abc123",
-                "User-Agent": "PostmanRuntime/7.15.2",
-                "X-Amzn-Trace-Id": "Root=1-abcdefg",
-                "X-Forwarded-For": "12.34.56.78",
-                "X-Forwarded-Port": "443",
-                "X-Forwarded-Proto": "https"
-            },
-            "httpMethod": "POST",
-            "body": `name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&message=${encodeURIComponent(message)}`,
-            "isBase64Encoded": false
-        };
-
-        // Convert the JSON object to a string
-        const jsonFormData = JSON.stringify(formData);
-
-        // Send the JSON data to your Lambda function URL
-        fetch("https://tl3ivle73v3ljzwarqhulttyqu0tfdmu.lambda-url.us-east-1.on.aws", {
-            method: "POST",
-            body: jsonFormData,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // Handle the response from your Lambda function here
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            // Handle any errors here
-        });
-    }
-</script>
+ 
   
 </body>
 
