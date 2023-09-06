@@ -38,44 +38,23 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
   <script> 
-  function submitToAPI(e) {
+ function submitToAPI(e) {
     e.preventDefault();
     
     var URL = "https://aetvey0frk.execute-api.us-east-1.amazonaws.com/prod/prolificmail";
 
-    var Namere = /[A-Za-z]{2,}/; // Updated regex for at least 2 characters
-    if (!Namere.test($("#name-input").val())) {
-        alert("Name must be at least 2 characters");
-        return;
-    }
-    
-    var mobilere = /^[0-9]{11}$/; // Updated regex for exactly 10 digits
-    if (!mobilere.test($("#phone-input").val())) {
-        alert("Please enter a valid 11-digit mobile number");
-        return;
-    }
-    
-    if ($("#email-input").val() === "") {
-        alert("Please enter your email address");
-        return;
-    }
-
-    var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-    if (!reeamil.test($("#email-input").val())) {
-        alert("Please enter a valid email address");
-        return;
-    }
-
     var name = $("#name-input").val();
     var phone = $("#phone-input").val();
     var email = $("#email-input").val();
-    var desc = $("#description-input").val();
+    var subject = $("#subject-input").val();
+    var message = $("#message-input").val();
     
     var data = {
         name: name,
         phone: phone,
         email: email,
-        desc: desc
+        subject: subject,
+        message: message
     };
 
     $.ajax({
@@ -87,13 +66,15 @@
         data: JSON.stringify(data),
 
         success: function () {
-            // clear the form and show a success message
-            alert("Successfully submitted");
-            $("#contact-form")[0].reset();
+           // Display the success message
+        $(".sent-message").slideDown().html("Your message has been sent. Thank you!");
+        $(".error-message").slideUp().html("");
+        $(".php-email-form")[0].reset(); // Reset the form
         },
         error: function () {
-            // show an error message
-            alert("Submission was unsuccessful");
+           // Display the error message
+           $(".error-message").slideDown().html("An error occurred while sending your message.");
+        $(".sent-message").slideUp().html("");
         }
     });
 }
@@ -738,7 +719,42 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form id="contact-form" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name-input" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="email">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email-input" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="phone">phone</label>
+                  <input type="phone" class="form-control" name="email" id="phone-input" required>
+                </div>
+              <div class="form-group col-md-6">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject-input" required>
+              </div>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea class="form-control" name="message" id="message-input" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" onClick="submitToAPI(event)">Send Message</button>
+              </div>
+            </form>
+
+            <!--form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
@@ -765,29 +781,8 @@
               
               <div class="text-center">
                <input type="submit" value"send"> <button type="submit">Send Message</button></div>
-            </form>
-            <form id="contact-form" method="post">
-              <div class="form-group">
-                  <label for="name-input"><h4>Name:</h4></label>
-                  <input type="text" class="form-control" id="name-input" placeholder="Enter your name" required>
-              </div>
-              <div class="form-group">
-                  <label for="phone-input"><h4>Phone:</h4></label>
-                  <input type="tel" class="form-control" id="phone-input" placeholder="Enter your phone number" required>
-              </div>
-              <div class="form-group">
-                  <label for="email-input"><h4>Email:</h4></label>
-                  <input type="email" class="form-control" id="email-input" placeholder="Enter your email" required>
-              </div>
-              <div class="form-group">
-                  <label for="description-input"><h4>How can we help you?</h4></label>
-                  <textarea class="form-control" id="description-input" rows="3" placeholder="Enter your message" required></textarea>
-              </div>
-              <div class="form-group">
-                  <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys"></div>
-              </div>
-              <button type="button" class="btn btn-lg" onclick="submitToAPI(event)" style="margin-top: 20px;">Submit</button>
-          </form>
+            </form-->
+            
           
         
             
