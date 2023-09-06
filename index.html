@@ -41,7 +41,7 @@
   function submitToAPI(e) {
     e.preventDefault();
     
-    var URL = "https://aetvey0frk.execute-api.us-east-1.amazonaws.com/prod";
+    var URL = "https://aetvey0frk.execute-api.us-east-1.amazonaws.com/prod/prolificmail";
 
     var Namere = /[A-Za-z]{2,}/; // Updated regex for at least 2 characters
     if (!Namere.test($("#name-input").val())) {
