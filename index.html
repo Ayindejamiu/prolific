@@ -49,9 +49,9 @@
         return;
     }
     
-    var mobilere = /^[0-9]{10}$/; // Updated regex for exactly 10 digits
+    var mobilere = /^[0-9]{11}$/; // Updated regex for exactly 10 digits
     if (!mobilere.test($("#phone-input").val())) {
-        alert("Please enter a valid 10-digit mobile number");
+        alert("Please enter a valid 11-digit mobile number");
         return;
     }
     
@@ -767,17 +767,28 @@
                <input type="submit" value"send"> <button type="submit">Send Message</button></div>
             </form>
             <form id="contact-form" method="post">
-              <h4>Name:</h4>
-              <input type="text" style="height:35px;" id="name-input" placeholder="Enter name here…" class="form-control" style="width:100%;" /><br/>
-              <h4>Phone:</h4>
-              <input type="phone" style="height:35px;" id="phone-input" placeholder="Enter phone number" class="form-control" style="width:100%;"/><br/>
-              <h4>Email:</h4>
-              <input type="email" style="height:35px;" id="email-input" placeholder="Enter email here…" class="form-control" style="width:100%;"/><br/>
-              <h4>How can we help you?</h4>
-              <textarea id="description-input" rows="3" placeholder="Enter your message…" class="form-control" style="width:100%;"></textarea><br/>
-              <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control" style="width:100%;"></div>
-              <button type="button" onClick="submitToAPI(event)" class="btn btn-lg" style="margin-top:20px;">Submit</button>
-        </form>
+              <div class="form-group">
+                  <label for="name-input"><h4>Name:</h4></label>
+                  <input type="text" class="form-control" id="name-input" placeholder="Enter your name" required>
+              </div>
+              <div class="form-group">
+                  <label for="phone-input"><h4>Phone:</h4></label>
+                  <input type="tel" class="form-control" id="phone-input" placeholder="Enter your phone number" required>
+              </div>
+              <div class="form-group">
+                  <label for="email-input"><h4>Email:</h4></label>
+                  <input type="email" class="form-control" id="email-input" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                  <label for="description-input"><h4>How can we help you?</h4></label>
+                  <textarea class="form-control" id="description-input" rows="3" placeholder="Enter your message" required></textarea>
+              </div>
+              <div class="form-group">
+                  <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys"></div>
+              </div>
+              <button type="button" class="btn btn-lg" onclick="submitToAPI(event)" style="margin-top: 20px;">Submit</button>
+          </form>
+          
         
             
       
